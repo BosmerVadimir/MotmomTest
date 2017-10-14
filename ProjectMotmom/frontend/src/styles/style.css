@@ -1,0 +1,151 @@
+#main{
+
+  font-family: "Comic Sans MS";
+}
+#mainText{
+  text-align: center;
+  font-family:inherit;
+}
+
+#insPosBtn{
+  display: flex;
+  font-family:inherit;
+  margin: auto;
+  padding: 4px 6px;
+  background-color: white;
+  border-radius: 5px;
+}
+#insTxtMenu{
+  display: inline-block;
+  margin:5% 60%;
+  font-family:inherit;
+  width: 300px;
+  height: 210px;
+  border-style: solid;
+  border-color: black;
+  border-radius: 5px;
+  border-width: 1px;
+  text-align: center;
+}
+#insPt{
+  display: block;
+  font-family:inherit;
+  padding: 2%;
+  border-bottom-style: solid;
+  border-width: thin;
+}
+#inputs{
+  width: 80%;
+  font-size: 8pt;
+  margin: 0 10%;
+
+
+}
+#txtName{
+  text-align: left;
+}
+
+#inputIns1{
+  width: 100%;
+}
+
+#txtTime{
+  text-align: left;
+}
+
+#inputIns2{
+  width: 100%;
+}
+
+#btns{
+  display: flex;
+  justify-content: space-between;
+  height: 30px;
+
+}
+#btnOk{
+  width: 40%;
+  font-family: "Comic Sans MS",serif;
+
+
+}
+
+#btnCansel{
+  width: 40%;
+  font-family: "Comic Sans MS", serif;
+
+}
+#timeTable{
+  display: inline-block;
+  margin:5% 60%;
+
+}
+#timeBtn{
+  border-style: solid;
+  border-width: thin;
+  border-radius: 5px;
+  border-color: #9a9a9a;
+  padding:5px 20px;
+}
+
+#close {
+    opacity: 0.5;
+}
+#close:hover {
+  opacity: 1;
+}
+#close:before, #close:after {
+  position: fixed;
+  background-color: #333;
+}
+   #positions{
+
+   margin-top: -224px;
+   margin-left: 10%;
+   }
+#posLine{
+    display: inline-block;
+    background-color: #9a9a9a;
+    -webkit-border-radius: 5px 5px 5px 5px;
+    width: 400px;
+    border-collapse: separate;
+
+}
+#check{
+    -webkit-border-radius: 3px 3px 3px 3px;
+}
+td {
+  border: solid;
+}
+#cross{
+  border: dotted;
+  border-width: thin;
+  width: 6%;
+}
+.square {
+  background: #fff;
+  border: 1px solid #999;
+  float: left;
+  font-size: 24px;
+  line-height: 24px;
+  height: 40px;
+  margin-right: 5px;
+  margin-top: 5px;
+  padding: 0;
+  text-align: center;
+  width: 100px;
+  -webkit-border-radius: 5px 5px 5px 5px;
+  border-collapse: separate;
+}
+.board-row {
+  clear: both;
+  content: "";
+  display: table;
+}
+.square:focus {
+  outline: none;
+}
+.status {
+  margin-bottom: 10px;
+}
+

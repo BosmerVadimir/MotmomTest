@@ -1,0 +1,115 @@
+#main{
+
+  font-family: "Comic Sans MS";
+}
+#inputTxt{
+  text-align: center;
+  font-family:inherit;
+}
+
+#insPosBtn{
+  display: flex;
+  font-family:inherit;
+  margin: auto;
+  padding: 4px 6px;
+  background-color: white;
+  border-radius: 5px;
+}
+#insTxtMenu{
+  margin:5% 60%;
+  font-family:inherit;
+  width: 300px;
+  height: 210px;
+  border-style: solid;
+  border-color: black;
+  border-radius: 5px;
+  border-width: 1px;
+  text-align: center;
+}
+#insPt{
+  display: block;
+  font-family:inherit;
+  padding: 2%;
+  border-bottom-style: solid;
+  border-width: thin;
+}
+#inputs{
+  width: 80%;
+  font-size: 8pt;
+  margin: 0 10%;
+
+
+}
+#txtName{
+  text-align: left;
+}
+
+#inputIns1{
+  width: 100%;
+}
+
+#txtTime{
+  text-align: left;
+}
+
+#inputIns2{
+  width: 100%;
+}
+
+#btns{
+  display: flex;
+  justify-content: space-between;
+  height: 30px;
+
+}
+#btnOk{
+  width: 40%;
+  font-family: "Comic Sans MS",serif;
+
+
+}
+
+#btnCansel{
+  width: 40%;
+  font-family: "Comic Sans MS", serif;
+
+}
+#timeTable{
+  display: block;
+  margin-top: 50%;
+}
+#timeBtn{
+  border-style: solid;
+  border-width: thin;
+  border-radius: 5px;
+  border-color: #9a9a9a;
+  padding:5px 20px;
+}
+#positions{
+  position:absolute;
+  background-color: #9a9a9a;
+  margin: 2% 10%;
+}
+
+#close {
+  width: 32px;
+  height: 32px;
+  opacity: 0.5;
+}
+#close:hover {
+  opacity: 1;
+}
+#close:before, #close:after {
+  position: fixed;
+  margin: auto;
+  content: ' ';
+  height: 15px;
+  width: 2px;
+  background-color: #333;
+}
+#close:before {
+  transform: rotate(45deg);
+}
+#close:after {
+  transform: rotate(-45deg);
+}
