@@ -4,7 +4,7 @@ export default class PositionMenu extends Component{
 
    constructor() {
         super();
-        this.state = {items: []};
+        this.state = {data: []};
     }
     //Добавляем в конец списка новый пункт:
     addItem(event) {

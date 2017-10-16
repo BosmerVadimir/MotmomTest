@@ -1,8 +1,9 @@
 import React, {Component} from "react";
 import InputMenu from "./content/InputMenu";
 import InputTxt from "./content/InputTxt";
-import PositionMenu from "./content/PositionMenu";
+import getAns from "./content/DataFunction";
 import TimeMenu from "./content/TimeMenu";
+import axios from "axios";
 import "./styles/style.css";
 import "./styles/appMotmom.css";
 
@@ -10,10 +11,25 @@ import "./styles/appMotmom.css";
 class App extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            data: [],
+            hello:true}
+        this.toggleText = this.toggleText.bind(this);
+    }
+    toggleText() {
+        this.setState({hello: !this.state.hello});
 
-       /* visibleModal:false;*/
-       /* this.toggleVisibleModal = this.toggleVisibleModal.bind(this);*/
-
+    };
+    onDelete(index,event) {
+        const number = this.state.data[index].id;
+        console.log(number);
+        event.preventDefault()
+        axios.delete('http://127.0.0.1:8000/events/api/'+ number +'/')
+            .then(function (response) {
+                console.log(response)
+            })
+        this.state.data.splice(index, number);
+        this.setState({data: this.state.data})
     }
 
     //Переключаем появление и исчезание окна:
@@ -22,17 +38,12 @@ class App extends Component {
     }*/
 
     render() {
+
         return (
-            <div>
-                <InputMenu /*toggleVisibleModal = {this.toggleVisibleModal}*/ />
-                 <div> <InputTxt /></div>
-
-               <TimeMenu/>
-               <PositionMenu/>
-
-
-                {/*<button type="insert" onClick={this.onInsert}>Insert</button>*/}
-
+            <div id="main">
+                <InputMenu />
+                <InputTxt />
+                <TimeMenu />
             </div>
         );
     }

@@ -1,15 +1,26 @@
 import React, {Component} from "react";
+import getAns from "./DataFunction";
 import axios from "axios";
+import InputMenu from "./InputMenu";
 export default class InputTxt extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {name: '', ins_time: ''};
+        this.state = {
+            items: ['...'],
+            name: '',
+            ins_time: '',
+            data:[]
+        };
         this.handleChange = this.handleChange.bind(this);
         this.handleChange1 = this.handleChange1.bind(this);
+        this.toggleText = this.handleChange1.bind(this);
+        this.clearField = this.clearField.bind(this);
+
         this.onInsert = this.onInsert.bind(this);
-        this.onDelete = this.onDelete.bind(this);
+        this.onDelete = this.onDelete.bind(this)
     }
+
 
     handleChange(event) {
 
@@ -35,62 +46,96 @@ export default class InputTxt extends Component {
             }).then(response => {
         })
     }
-
     onInsert() {
-        console.log(this.state);
-        axios.post('http://127.0.0.1:8000/events/api/', this.state)
+        this.state.items.push();
+        this.setState({items: this.state.items});
+       axios.post('http://127.0.0.1:8000/events/api/', this.state)
+            .then(function (response) {
+                console.log(response.data)
+            });
+
+        getAns().then(response => {
+            console.log(response.data);
+            this.setState({data: response.data});
+
+        });
+
+    }
+    clearField(event) {
+        event.preventDefault();
+        this.setState({name: '', ins_time:''});
+    }
+
+    onDelete(index,event) {
+        const number = this.state.data[index].id;
+        console.log(number);
+        event.preventDefault()
+        axios.delete('http://127.0.0.1:8000/events/api/'+ number +'/')
             .then(function (response) {
                 console.log(response)
             })
+        this.state.data.splice(index, number);
+        this.setState({data: this.state.data})
     }
-
-    onDelete() {
-        console.log(this.state);
-        axios.delete('http://127.0.0.1:8000/events/api/8/')
-            .then(function (response) {
-                console.log(response)
-            })
-    }
-
-
 
     render() {
 
 
         return (
-            <div id="insTxtMenu">
+                <div>
+                        <div id="insTxtMenu">
+                            <div id="insPt">Добавление нового пункта</div>
+                            <form id="result">
+                                <p id="txtName"> Название</p>
+                                <input id="inputIns1"
+                                       type="text"
+                                       value={this.state.name}
+                                       onChange={this.handleChange}
+                                       placeholder="Введите событие"
+                                       required>
+                                </input>
 
-                <form id="result">
-                    <p id="txtName"> Название</p>
+                                <p id="txtTime"> Время </p>
 
-                    <input id="inputIns1"
-                           type="text"
-                           value={this.state.name}
-                           onChange={this.handleChange}
-                           placeholder="Введите событие"
-                           required>
-                    </input>
+                                <input id="inputIns2"
+                                       type="text"
+                                       value={this.state.ins_time}
+                                       onChange={this.handleChange1}
+                                       placeholder="Введите время"
+                                       required>
+                                </input>
 
-                    <p id="txtTime"> Время </p>
+                                <p >
+                                    <button id='btnOk' type="submit" form="result" onClick={this.onInsert}> OK</button>
+                                    <button id="btnCansel" type="reset" form="clear" onClick={this.clearField}> Cansel
+                                    </button>
+                                </p>
 
-                    <input id="inputIns2"
-                           type="text"
-                           value={this.state.ins_time}
-                           onChange={this.handleChange1}
-                           placeholder="Введите время"
-                           required>
 
-                    </input><br/><br/>
+                            </form>
 
-                    <div>
+                        </div>
+                    <div id='tableEvents'>
+                        <ul>
+                            {this.state.data.map((data, index) => (
 
-                        <button type="insert" style={{marginTop: '20px'}} form="result" onClick={this.onInsert}>Добавить</button>
-                        <button style={{marginTop: '20px'}} form="result" onClick={this.onDelete}>Удалить</button>
+                                <p id="newPar" key={index}>
+                                    <div id="checkBox" width={20} ><input type="checkBox"/></div>
+                                    <div id="div_1" >{data.ins_time}</div>
+                                    <div id="div_2" > </div>
+                                    <div id="div_3" >{data.name}</div>
+                                    <div id="cross" align="center">
+                                        <div onClick={this.onDelete.bind(this, index)}>X</div>
+                                    </div>
+                                </p>
+                            ))}
+                            <br/>
+                        </ul>
+
+
+
                     </div>
-                    <button type="button" onClick={this.onClick}>Send GET /products</button>
-                </form>
-
-             </div>
+                </div>
 
         )
     }

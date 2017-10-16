@@ -1,62 +1,66 @@
-import axios from "axios";
+/*import axios from "axios";*/
 import React, {Component} from "react";
-
+/*import getAns from "./DataFunction";*/
  export default class InputMenu extends Component {
 
-//создаем кнопку добавить позицию, при нажатии, текст меняется на вернуться.
+
     constructor(props) {
         super(props);
         this.state = {
-            hello: true, data: []
+            /*hello: true, data: []*/
 
         }
-
-        this.toggleText = this.toggleText.bind(this);
+        /*this.toggleText = this.toggleText.bind(this);*/
 
     }
 
+/*
+
     toggleText() {
         this.setState({hello: !this.state.hello});
-        /*this.props.toggleVisibleModal();*/
-        console.log("Sending a GET API Call !!!");
 
-        axios.get('http://127.0.0.1:8000/events/api/')
-            .then(res => {
-                console.log(res.data);
-                this.setState({data: res.data});
-            }).then(response => {
-
-
-
-        })
-            .catch(err => {
-                // Возьмите здесь ошибку. Например. используйте this.setState (), чтобы отобразить сообщение об ошибке.
-            })
     };
+     onDelete(index) {
+         const number = this.state.data[index].id;
+         console.log(number);
+
+         axios.delete('http://127.0.0.1:8000/events/api/'+ number +'/')
+             .then(function (response) {
+                 console.log(response)
+             })
+         this.state.data.splice(index, number);
+         this.setState({data: this.state.data})
+     }
+*/
 
 
     render() {
 
 
 
-
-
         return (
             <div >
-                <p id="mainText">
+                <p id="firstText" align="center">
                     Список мероприятий <br/><br/>
-                    <button id="insPosBtn" onClick={this.toggleText}>
-                        {this.state.hello ? "Добавить позицию" : "Вернуться"}
-                    </button>
                 </p>
-                <ul>
+                <button id="insPosBtn" onClick={this.onClick}>Добавить позицию</button>
+                {/*<ul>
                     {this.state.data.map((data, index) => (
-                        <li key={index}>
-                            {data.name} {data.ins_time}
-                        </li>
+                        <table id="newPunct" key={index}>
+                            <tbody>
+                            <tr>
+                                <td width={20} align="center"><input type="checkBox"/></td>
+                                <td width={50} align="center">{data.name}</td>
+                                <td>{data.ins_time}</td>
+                                <td id="cross" align="center">
+                                    <div onClick={this.onDelete.bind(this, index)}>X</div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
                     ))}
 
-                </ul>
+                </ul>*/}
 
             </div>
         )
